@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title title="nguonhour">Student Managerment</title>
+    <link rel="icon" href="/image/images.jpg">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+</head>
+
+<style>
+    .back_ground {
+        background-size: cover;
+        background-position: center;
+        background-image: url("https://teach-learn.ca/wp-content/uploads/2021/01/burnout.gif");
+    }
+    @media (max-width: 768px) {
+        .modal-dialog {
+            width: 90%;
+        }
+
+        .back_ground {
+            background-size: cover;
+            background-position: center;
+            background-image: url("https://teach-learn.ca/wp-content/uploads/2021/01/burnout.gif");
+        }
+
+        .container-lg {
+            flex-direction: column; 
+            text-align: center;
+        }
+
+        input, select, button {
+            width: 100%; /* Ensure full width in smaller screens */
+            margin: 5px 0;
+        }
+    }
+
+    @media (max-width: 576px) {
+        h1, h2, h6 {
+            font-size: smaller;
+        }
+
+        .modal-lg {
+            width: 100%; /* Full screen modal for very small devices */
+        }
+    }
+</style>
+
+
+<body>
+
+    <!-- Modal -->
+    <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-6 text-success" id="exampleModalLabel"><I>Register form</I></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body row">
+                        <div class="container-lg bg bg-black text-white p-4 d-flex justify-content-center">
+                            <h1 class="text-center">Student Managerment</h1>
+                        </div>
+                        <div class="container-lg bg bg-black text-white p-3 d-flex justify-content-between">
+
+                            <span>
+                                <h6>ID</h6>
+                                <input type="text" id="txt_id" placeholder="ID" class="form-control my-2">
+                                <br><br>
+
+                                <h6>Name</h6>
+                                <input type="text" id="txtname" placeholder="Name" class="form-control my-2">
+                                <br><br>
+
+                                <h6>Gender</h6>
+                                
+                                <input type="radio" value="Male" name="gender" id="male-rad" ><label for="male-rad">Male</label> &emsp;
+                                <input type="radio" value="Female" name="gender" id="female-rad"  style="margin-left: 1px;"><label for="female-rad">Female</label>
+                                <!-- class="form-check-inline" for radio and checkbox -->
+                                <br><br>
+
+                                <h6>Course</h6>
+                                <select name="" id="txtcourse" class="form-control my-2">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="C/C++">C/C++</option>
+                                    <option value="Java">Java</option>
+                                    <option value="web frontend">web frontend</option>
+                                    <option value="Moblie">Moblie</option>
+                                </select>
+                                <br><br>
+                            </span>
+
+                            <span>
+                                <h6>Attendant score</h6>
+                                <input type="number" id="att-score" class="form-control my-2" placeholder="Attendant">
+                                <br><br>
+                                <h6>Assignment score</h6>
+                                <input type="number" id="ass-score" class="form-control my-2" placeholder="Assignment">
+                                <br><br>
+                                <h6>Exam score</h6>
+                                <input type="number" id="exam-score" class="form-control my-2" placeholder="Exam">
+                                <br><br>
+
+
+                            </span>
+                            <span>
+                                <h6>Total</h6>
+                                <input type="number" id="total-score" class="form-control my-2" disabled
+                                    placeholder="Total">
+                                <br><br>
+                                <h6>Average</h6>
+                                <input type="number" id="average-score" class="form-control my-2" disabled
+                                    placeholder="Average">
+                                <br><br>
+                                <h6>Grade</h6>
+                                <input type="text" id="grade" class="form-control my-2" disabled placeholder="Grade">
+                                <br><br>
+                            </span>
+                        </div>
+                        <div class="container-lg bg bg-black text-white p-4 d-grid gap-2 d-sm-flex justify-content-center pt-0">
+                            <button type="button" class="btn btn-outline-success my-2" id="submit" 
+                            style="margin-left: 20px; width: 200px;">Submit</button>
+                            <button type="reset" class="btn btn-outline-warning my-2" id="clear"
+                            style="margin-left: 20px; width: 200px;">clear</button>
+                            <button type="button" id="btnUpdate" class="btn btn-outline-primary my-2 d-none" data-bs-dismiss="modal" style="margin-left: 20px; width: 200px;">Update</button>
+                            <button type="button" id="btnDelete" class="btn btn-outline-danger my-2 d-none" style="margin-left: 20px; width: 200px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg bg-dark container-sm mt-4 border border-2 border-info-subtle back_ground" style="border-radius: 50px; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+        
+        <button type="button" class="btn btn-primary mt-5 ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            ADD Student
+        </button>
+        <h1 class="text-center mt-5 text-dark"><B><I>Infomation</I></B></h1>
+        <div class="col-11 mx-auto text-light bg-dark pt-3 pb-1 pe-2 ps-2" style="border-radius: 30px; box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px;">
+            <div class="table-responsive">
+                <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">N <sup>o</sup></th>
+                                <th scope="col">First-Name</th>
+                                <th scope="col">Last-Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Attendant</th>
+                                <th scope="col">Assignment</th>
+                                <th scope="col">All-Exam</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Average</th>
+                                <th scope="col">Grade</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+  
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Infomation Delete</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <b>
+                    <h2>Do you want to delete ?</h2>
+                </b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="yesTodelete">YES</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">NO</button>
+            </div>
+        </div>
+        </div>
+    </div>
+      
+</body>
+<script src="form.js"></script>
+
+</html>
